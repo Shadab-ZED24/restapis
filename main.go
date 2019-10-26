@@ -42,5 +42,5 @@ func main() {
 	//Router Handler /EndPoints
 	r.HandleFunc("/api/books", getBooks).Methods("GET")
 
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Fatal(http.ListenAndServe("", r))
 }
