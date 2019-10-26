@@ -2,8 +2,10 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 )
@@ -42,5 +44,10 @@ func main() {
 	//Router Handler /EndPoints
 	r.HandleFunc("/api/books", getBooks).Methods("GET")
 
-	log.Fatal(http.ListenAndServe("", r))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	fmt.Println(port)
+	log.Fatal(http.ListenAndServe(":"+port, r))
 }
